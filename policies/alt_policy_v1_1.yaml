@@ -1,0 +1,139 @@
+# Fusion Compliance Loop — alternate policy set, used to demonstrate a live,
+# safe policy reload (the "rapid policy changes" adversarial condition).
+# Same rule set as default_policy.yaml except MISSING_RELEASE_PERMISSION is
+# tightened from REQUIRE_REVIEW to SEGREGATE — a realistic field update
+# where an operator decides unreleased non-public data should no longer even
+# get a human-review path, it should just be blocked outright.
+policy_id: fusion-compliance-baseline
+policy_version: "1.1.0"
+
+field_sensitivity_map:
+  raw_signal_signature: restricted
+  facial_recognition_signature: restricted
+
+rules:
+  - rule_id: FORBIDDEN_DOMAIN
+    rule_version: "1.0.0"
+    rule_priority: 10
+    effective_date: "2026-01-01"
+    description: >
+      CONFIDENTIAL data not released for the target network domain is
+      rejected outright — nothing about it may enter fusion.
+    classification_level: [confidential]
+    release_authority: not_granted_for_destination
+    enforcement_action: REJECT
+    permitted_fields: []
+    restricted_fields: ["*"]
+    required_metadata: []
+
+  - rule_id: AUTHORIZED_PROTECTED_B_DOWNGRADE
+    rule_version: "1.0.0"
+    rule_priority: 15
+    effective_date: "2026-01-01"
+    description: >
+      Protected B data not released for the target domain MAY cross with its
+      sensitive field stripped, but only when an explicit, accountable
+      downgrade authorization is on file.
+    classification_level: [protected_b]
+    release_authority: not_granted_for_destination
+    requires_downgrade_authorization: true
+    enforcement_action: DOWNGRADE
+    permitted_fields: [speed_mps, distance_m, direction_deg, confidence_score]
+    restricted_fields: [raw_signal_signature, facial_recognition_signature]
+    required_metadata: []
+
+  - rule_id: RESTRICTED_CROSS_DOMAIN
+    rule_version: "1.0.0"
+    rule_priority: 20
+    effective_date: "2026-01-01"
+    description: >
+      RESTRICTED data not released for the target domain has its sensitive
+      fields blocked, but its remaining metadata is still permitted to fuse.
+    classification_level: [restricted]
+    release_authority: not_granted_for_destination
+    enforcement_action: SEGREGATE
+    permitted_fields: [speed_mps, distance_m, direction_deg, confidence_score]
+    restricted_fields: [raw_signal_signature, facial_recognition_signature]
+    required_metadata: []
+
+  - rule_id: PROTECTED_B_CROSS_DOMAIN
+    rule_version: "1.0.0"
+    rule_priority: 25
+    effective_date: "2026-01-01"
+    description: >
+      Protected B data not released for the target domain is segregated —
+      sensitive fields blocked, remaining metadata permitted. Simulated
+      policy enforcement only, not real Protected B accreditation.
+    classification_level: [protected_b]
+    release_authority: not_granted_for_destination
+    enforcement_action: SEGREGATE
+    permitted_fields: [speed_mps, distance_m, direction_deg, confidence_score]
+    restricted_fields: [raw_signal_signature, facial_recognition_signature]
+    required_metadata: []
+
+  - rule_id: SENSITIVE_MASKING
+    rule_version: "1.0.0"
+    rule_priority: 30
+    effective_date: "2026-01-01"
+    description: >
+      SENSITIVE data with permissions declared for other domains, but not
+      this one, is permitted with its sensitive fields masked.
+    classification_level: [sensitive]
+    release_authority: declared_but_missing_destination
+    enforcement_action: RESTRICT
+    permitted_fields: [speed_mps, distance_m, direction_deg, confidence_score]
+    restricted_fields: [raw_signal_signature, facial_recognition_signature]
+    required_metadata: []
+
+  - rule_id: MISCLASSIFIED_FIELD
+    rule_version: "1.0.0"
+    rule_priority: 40
+    effective_date: "2026-01-01"
+    description: >
+      An item declares a classification lower than a field it actually
+      carries (per field_sensitivity_map) — flagged for human review instead
+      of trusted at face value.
+    check_field_sensitivity_mismatch: true
+    enforcement_action: REQUIRE_REVIEW
+    permitted_fields: []
+    restricted_fields: []
+    required_metadata: []
+
+  - rule_id: MISSING_RELEASE_PERMISSION
+    rule_version: "1.1.0"
+    rule_priority: 50
+    effective_date: "2026-01-01"
+    description: >
+      v1.1: tightened from REQUIRE_REVIEW to SEGREGATE — non-public data with
+      no declared release permissions at all is now blocked outright rather
+      than merely flagged for review.
+    classification_level: [sensitive, restricted, protected_b, confidential]
+    release_authority: empty
+    enforcement_action: SEGREGATE
+    permitted_fields: []
+    restricted_fields: [raw_signal_signature, facial_recognition_signature]
+    required_metadata: []
+
+  - rule_id: AI_HIGH_RISK_REVIEW
+    rule_version: "1.0.0"
+    rule_priority: 90
+    effective_date: "2026-01-01"
+    description: >
+      The AI compliance-risk detector flagged this item's metadata pattern as
+      high-risk; no higher-priority deterministic rule matched, so this item
+      would otherwise DEFAULT_PERMIT. Escalated to human review instead.
+    requires_ai_risk_at_least: 0.85
+    enforcement_action: REQUIRE_REVIEW
+    permitted_fields: []
+    restricted_fields: []
+    required_metadata: []
+
+  - rule_id: DEFAULT_PERMIT
+    rule_version: "1.0.0"
+    rule_priority: 100
+    effective_date: "2026-01-01"
+    description: Public or properly released data is permitted by default.
+    enforcement_action: PERMIT
+    permitted_fields: []
+    restricted_fields: []
+    required_metadata: []

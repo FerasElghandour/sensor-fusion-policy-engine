@@ -1,0 +1,945 @@
+{
+  "recorded_at_utc": "2026-10-17T16:06:49.130404+00:00",
+  "metric_version": "2.0",
+  "scope": "synthetic missions only; warm in-process matching latency; no operational accreditation",
+  "environment": {
+    "python": "3.11.15",
+    "system": "Darwin",
+    "machine": "arm64",
+    "packages": {
+      "fastapi": "0.136.1",
+      "starlette": "1.0.0",
+      "pydantic": "2.13.3",
+      "networkx": "3.6.1",
+      "PyYAML": "6.0.3",
+      "scikit-learn": "1.8.0",
+      "numpy": "2.4.4",
+      "scipy": "1.17.1",
+      "httpx": "0.28.1",
+      "pytest": "9.0.2"
+    }
+  },
+  "source_sha256": {
+    "api/config.py": "abec0ac6d91644617d55eadab03054953201249fc6075e694668501c0096cdc7",
+    "api/main.py": "5b5c9d3384186da4a6bd4e047477bce8ebe613f99db354d70c0b2f3752ecb8a2",
+    "api/protection.py": "9e7002660f7ad5f02952aec518fdb60fbbcbe4c5518d13ed82b7246abffc8224",
+    "fusion_compliance_loop/scenarios.py": "8cb395c92bd42eac84e021ab93f81a95e85c36878fd36c4ac848960b1290aa22",
+    "fusion_compliance_loop/fusion_engine.py": "82390067a835ebccd320caf2cce5e416c90c87a2f65c29654da05150e0d07419",
+    "fusion_compliance_loop/compliance_engine.py": "c4488ab473a48d8103e2db8e02e29a1a7ca9436b9c066098154612e986fd8156",
+    "fusion_compliance_loop/db.py": "bde59652e2fbd9618e5794158aa7ee536da495355e3b9c55d40294f4eca07421",
+    "fusion_compliance_loop/provenance_recorder.py": "0be3ea5afe4fa3f2d6b7a61e4dbefc564f4d0b445ee103c6b5a8caee2bc6b629",
+    "fusion_compliance_loop/time_alignment_engine.py": "e8cc9adf10c37bfa01aebf5e4b1cdbdc836e4056ba7b5a788e0270e322757aba",
+    "fusion_compliance_loop/enums.py": "f75f0cdbe4e88110175cf0484c07bc99f42541356748248636c17e82c4ec9d66",
+    "fusion_compliance_loop/policy_engine.py": "974d0b15da69541623503366f415a18466cd3fb478f8d26584bc29b35898ef9b",
+    "fusion_compliance_loop/models.py": "b527c1b8bd49e157a154e41941afa306e3f66b504099edd262b27c269f8838c8",
+    "fusion_compliance_loop/policy_schema.py": "a4c1ed310678273848e1138d84d135e85ad13d26ae42a2b6dae26d7018537aad",
+    "fusion_compliance_loop/entity_association_engine.py": "c8367e5669facc676efc359a16ed86b390fb170c5e9bc61218b1f491413a9b04",
+    "fusion_compliance_loop/__init__.py": "4a997a2cce5e70cdb3cb9fe9caffc27ca3683e6cd5a2ff914ce8061178cc3352",
+    "fusion_compliance_loop/downstream_fusion.py": "3b8746151c23bd78168b725d93059120b08294250a419d169f141ea22f47e8bc",
+    "fusion_compliance_loop/evidence_dependency_graph.py": "e1551976f7ba166bf806b2546b4eea4c30ce3b0a26a945718bdafe0fd1971ae1",
+    "fusion_compliance_loop/service_state.py": "5069c8da14508ffd15685a6305997176897ab5d73648fdbe239e79d33e424e62",
+    "fusion_compliance_loop/audit_log_exporter.py": "a14a4b7eb56d317d92e01205adf1c6a4b1ff3ea08adf4289c3c357a7aceca17f",
+    "fusion_compliance_loop/uncertainty_engine.py": "27ef10e2f4f51a43b49872be42c3b99fd57d2a87f1571c24cde1386d54e4e768",
+    "fusion_compliance_loop/adversarial_generator.py": "569f1c61bf0e0f1ab95337ddfc698d5582f88b390135bdcddf1193ab54611bea",
+    "fusion_compliance_loop/synthetic_sensor_generator.py": "ff76f3e93aff79511ecc043a2e8eef8284b4a198302b906f6b7c3d9a61680be4",
+    "fusion_compliance_loop/ai_entity_association.py": "46314df00a7549d2814876f6a0112541c74ef78aecd987e77289a7610c1d4dab",
+    "fusion_compliance_loop/active_sensor_request_planner.py": "bcd496891950944382b8c832d2c5a6ee2de5cd29e95c4b6e46b2c0ee7ed9e2a8",
+    "fusion_compliance_loop/ai_compliance_risk.py": "f857782d83af23bc1c0573f23a8cb6a6ef18b3faa2f87a1628693b7e7d3fa1e8",
+    "benchmarks/approaches.py": "fdffe1b722d75b69f581a1444cea2108f4d5d8a71f40608c799fcece7776c7dc",
+    "benchmarks/metrics.py": "b53621c69eb48066c571b7b681c780fe78151cc7f16e259cccdde2095cbfb302",
+    "benchmarks/__init__.py": "6149935f93f4c9da75a4f848ecb252f5ffd5f7277b8794778529cf43344fe21f",
+    "benchmarks/failure_analysis.py": "4c99d7461dfa9452db51b2bf951d0e3e1c2a069512cb28691929a592ca23e350",
+    "benchmarks/run_all.py": "b533a555334205e324f56705b5d73c0f1ecfebf2cb7a7c30f52724d28b6a7ab1",
+    "scripts/check_evidence.py": "cf5cc4596a36afa2c8b39bc2c784236571f8943338962f4e7b089856279c07a2",
+    "scripts/evaluate_system.py": "ccee8401edb810e6421608b6832b35ca0ea03535955196ff01c38136bc73775c",
+    "policies/default_policy.yaml": "3d0a2d83645077b0fa3758df5be3a22341c8de309872130da71cf1dbb38dc3bb",
+    "policies/alt_policy_v1_1.yaml": "7f2f9fc6aedccdc4263e3e010d500b9103804fb8a6ee7a153664fe230c66aec9",
+    "tests/test_ai_entity_association.py": "d3a7a5a6d5b1922c8f550a0950290094de052ccc7129c166ee9a69be8b6b325d",
+    "tests/test_provenance.py": "25821c4340a8966dbd958ddf55d605ced029c22e6869e084ec0a9e8f96e7ef2b",
+    "tests/test_policy_engine.py": "1b32a2f64112df463a4426549ae26caaf4f1a6a7ce247dc1a98cc2a85f4a11fa",
+    "tests/test_ground_truth_composition.py": "e1557e1671345385ef2765b14fcea242054c1493bacb5110b1ca7a38d1089f3f",
+    "tests/conftest.py": "c50c8305f585c9551191788e47ab0cbebac1b54229902d72a7bd11ce8f5ae4b5",
+    "tests/test_policy_loader.py": "c706ccdd6e575ccd91f981c5bda1cba7a06a0f9a7e2167be381823069c421efa",
+    "tests/test_time_alignment.py": "cb2318a477f59e4a0d8d788a72792c29dbbd42134820ce013fe0f1e8adee4e3c",
+    "tests/test_ai_compliance_risk.py": "fe7ef54fab21137b004ddcfe8074669c5b39c74fce43617c6b0f7e5c01f7abc2",
+    "tests/test_benchmark_approaches.py": "01aaef9ee1f6ac1984ba7090411f4e06658550c6098935a5bddfc01151c66bf9",
+    "tests/test_v02_acceptance.py": "72a934ad9cc2eafe101acb9864685d5be0e34ff5f2552313bddcd56b658abe7c",
+    "tests/test_fusion_engine.py": "8fb7e3b45ff124fdc5eb3a1809b417d9a0ebbba00bde3bc20f8d2d052acd0d6e",
+    "tests/test_sensor_request_planner.py": "44235ffe72d7e950b864a8ce86b5a7e8ee9ec30465813a3e43d686c840e2bb6e",
+    "tests/test_service_state.py": "0b0692a558052f90df2c35897ae90e92a0415f9b4893696090aaea1949605e0b",
+    "tests/test_metric_contract.py": "b0601bf4c5dc0d8b738a9138ede69dfa47b00f63043ce174d1855b5b8f998551",
+    "tests/test_policy_consistency.py": "4b68824b136a6a06931f587fc29cb41d0159de0d3aef2332877e1faf5a950e9b",
+    "tests/test_adversarial_generator.py": "251848617971b5df6e9e6afee0df20eb41eaaa8695ba663397ba6406b8a1b420",
+    "tests/test_compliance_engine.py": "3cf30078817687829c7c3f914d2300800f61e90503d4cc7fc2681b0e922e8b3a",
+    "tests/test_dependency_graph.py": "1cf446927d4f378f859da89a27c2221a4d820db88a2b7ceba0a454ef80ec7cab",
+    "tests/test_acceptance.py": "4d0071c16a86f4a73d408aac789c87c696a4e5fffffd1079a96c751b1317c059",
+    "tests/test_benchmark_run_all.py": "452962004eaa3ff19f64e5906d77774da07224ff4d32d901d1c21432a5d4d6e3",
+    "tests/test_scenarios.py": "86dd95c28e5332bd86f9cd938439556960b6f5fb83571f41435e7b66141adc99",
+    "tests/test_models.py": "b2588b31b232b75f7ddecbd6edab551de259984d8c3f8c4b2b6f0cfee948aa6d",
+    "tests/test_uncertainty.py": "462254e4ab0e842d9119b92bc590b1dfc93bb73935928e588d393d7a5f5a09dd",
+    "tests/test_api.py": "36021c9687071a7e456abf71066da1bce1047c4e0d3749ac0868a2442a7117da",
+    "tests/test_v03_acceptance.py": "52a08c0f5c2b01bc39abb86ccacb374befca05d19715641c1854bd7decb4bfb6",
+    "tests/test_entity_association.py": "623dc710bdee4e252139c0feb39f98aa01fcf881ca1fca9c003194059f1c0c31",
+    "tests/test_downstream_fusion.py": "b6378b7e036aaafdd8039702d863891f8a7eaab7e2b97991f2d585b91265aa21",
+    "tests/test_api_hardening.py": "f37bba04412f36f9111e462f6e8c8084f741d54b71d331bbc6f4777abf84baf7",
+    "tests/test_protected_b.py": "f8f791bfa8448adbc7246c34346bdd5c3e68397359527aab2bf1b088a547a9c2"
+  },
+  "runs": [
+    {
+      "seed": 7,
+      "missions": 1000,
+      "metrics": {
+        "A_static_threshold_no_compliance": {
+          "metric_version": "2.0",
+          "wrong_match_count": 12,
+          "ground_truth_match_count": 929,
+          "approach": "A_static_threshold_no_compliance",
+          "mission_count": 1000,
+          "true_positives": 684,
+          "false_positives": 12,
+          "false_negatives": 245,
+          "true_negatives": 71,
+          "precision": 0.9828,
+          "recall": 0.7363,
+          "f1_score": 0.8418,
+          "false_fusion_rate": 0.012,
+          "missed_fusion_rate": 0.2637,
+          "at_risk_mission_count": 872,
+          "policy_violation_detection_rate": 0.2592,
+          "unauthorized_leakage_rate": 0.646,
+          "unauthorized_leakage_count": 646,
+          "avg_latency_s": 2e-06,
+          "p95_latency_s": 3e-06,
+          "provenance_completeness": 0.0,
+          "fused_mission_count": 696,
+          "explanation_coverage": 0.0,
+          "evidence_loop_termination_rate": 1.0,
+          "error_count": 0,
+          "unauthorized_record_leakage_rate": 1.0,
+          "unauthorized_record_leakage_count": 65,
+          "camera_rejection_required_count": 65,
+          "missing_metadata_detection_rate": 0.0,
+          "misclassification_detection_rate": 0.2121,
+          "cross_domain_violation_detection_rate": 0.2054,
+          "protected_b_isolation_rate": 0.2462,
+          "false_compliance_alert_rate": 0.0,
+          "audit_completeness": 0.0,
+          "downstream_contamination_rate": 0.0
+        },
+        "B_deterministic_plus_compliance": {
+          "metric_version": "2.0",
+          "wrong_match_count": 20,
+          "ground_truth_match_count": 929,
+          "approach": "B_deterministic_plus_compliance",
+          "mission_count": 1000,
+          "true_positives": 844,
+          "false_positives": 20,
+          "false_negatives": 85,
+          "true_negatives": 71,
+          "precision": 0.9769,
+          "recall": 0.9085,
+          "f1_score": 0.9414,
+          "false_fusion_rate": 0.02,
+          "missed_fusion_rate": 0.0915,
+          "at_risk_mission_count": 872,
+          "policy_violation_detection_rate": 1.0,
+          "unauthorized_leakage_rate": 0.0,
+          "unauthorized_leakage_count": 0,
+          "avg_latency_s": 0.001267,
+          "p95_latency_s": 0.001742,
+          "provenance_completeness": 1.0,
+          "fused_mission_count": 864,
+          "explanation_coverage": 1.0,
+          "evidence_loop_termination_rate": 1.0,
+          "error_count": 0,
+          "unauthorized_record_leakage_rate": 0.0,
+          "unauthorized_record_leakage_count": 0,
+          "camera_rejection_required_count": 65,
+          "missing_metadata_detection_rate": 0.863,
+          "misclassification_detection_rate": 1.0,
+          "cross_domain_violation_detection_rate": 1.0,
+          "protected_b_isolation_rate": 1.0,
+          "false_compliance_alert_rate": 0.0,
+          "audit_completeness": 1.0,
+          "downstream_contamination_rate": 0.0
+        },
+        "C_ai_assisted_plus_compliance": {
+          "metric_version": "2.0",
+          "wrong_match_count": 35,
+          "ground_truth_match_count": 929,
+          "approach": "C_ai_assisted_plus_compliance",
+          "mission_count": 1000,
+          "true_positives": 829,
+          "false_positives": 35,
+          "false_negatives": 100,
+          "true_negatives": 71,
+          "precision": 0.9595,
+          "recall": 0.8924,
+          "f1_score": 0.9247,
+          "false_fusion_rate": 0.035,
+          "missed_fusion_rate": 0.1076,
+          "at_risk_mission_count": 872,
+          "policy_violation_detection_rate": 1.0,
+          "unauthorized_leakage_rate": 0.0,
+          "unauthorized_leakage_count": 0,
+          "avg_latency_s": 0.001483,
+          "p95_latency_s": 0.002056,
+          "provenance_completeness": 1.0,
+          "fused_mission_count": 864,
+          "explanation_coverage": 1.0,
+          "evidence_loop_termination_rate": 1.0,
+          "error_count": 0,
+          "unauthorized_record_leakage_rate": 0.0,
+          "unauthorized_record_leakage_count": 0,
+          "camera_rejection_required_count": 65,
+          "missing_metadata_detection_rate": 0.8493,
+          "misclassification_detection_rate": 1.0,
+          "cross_domain_violation_detection_rate": 1.0,
+          "protected_b_isolation_rate": 1.0,
+          "false_compliance_alert_rate": 0.0,
+          "audit_completeness": 1.0,
+          "downstream_contamination_rate": 0.0
+        }
+      },
+      "case_file": "cases-seed-7.json",
+      "case_sha256": "610c0cbf05d36d1b88c03485a98c86eab25b61396a275c611aed3337302697c0"
+    },
+    {
+      "seed": 19,
+      "missions": 1000,
+      "metrics": {
+        "A_static_threshold_no_compliance": {
+          "metric_version": "2.0",
+          "wrong_match_count": 12,
+          "ground_truth_match_count": 941,
+          "approach": "A_static_threshold_no_compliance",
+          "mission_count": 1000,
+          "true_positives": 643,
+          "false_positives": 12,
+          "false_negatives": 298,
+          "true_negatives": 59,
+          "precision": 0.9817,
+          "recall": 0.6833,
+          "f1_score": 0.8058,
+          "false_fusion_rate": 0.012,
+          "missed_fusion_rate": 0.3167,
+          "at_risk_mission_count": 886,
+          "policy_violation_detection_rate": 0.3228,
+          "unauthorized_leakage_rate": 0.6,
+          "unauthorized_leakage_count": 600,
+          "avg_latency_s": 1e-06,
+          "p95_latency_s": 2e-06,
+          "provenance_completeness": 0.0,
+          "fused_mission_count": 655,
+          "explanation_coverage": 0.0,
+          "evidence_loop_termination_rate": 1.0,
+          "error_count": 0,
+          "unauthorized_record_leakage_rate": 1.0,
+          "unauthorized_record_leakage_count": 65,
+          "camera_rejection_required_count": 65,
+          "missing_metadata_detection_rate": 0.0,
+          "misclassification_detection_rate": 0.3245,
+          "cross_domain_violation_detection_rate": 0.235,
+          "protected_b_isolation_rate": 0.3284,
+          "false_compliance_alert_rate": 0.0,
+          "audit_completeness": 0.0,
+          "downstream_contamination_rate": 0.0
+        },
+        "B_deterministic_plus_compliance": {
+          "metric_version": "2.0",
+          "wrong_match_count": 22,
+          "ground_truth_match_count": 941,
+          "approach": "B_deterministic_plus_compliance",
+          "mission_count": 1000,
+          "true_positives": 855,
+          "false_positives": 22,
+          "false_negatives": 86,
+          "true_negatives": 59,
+          "precision": 0.9749,
+          "recall": 0.9086,
+          "f1_score": 0.9406,
+          "false_fusion_rate": 0.022,
+          "missed_fusion_rate": 0.0914,
+          "at_risk_mission_count": 886,
+          "policy_violation_detection_rate": 1.0,
+          "unauthorized_leakage_rate": 0.0,
+          "unauthorized_leakage_count": 0,
+          "avg_latency_s": 0.001478,
+          "p95_latency_s": 0.002436,
+          "provenance_completeness": 1.0,
+          "fused_mission_count": 877,
+          "explanation_coverage": 1.0,
+          "evidence_loop_termination_rate": 1.0,
+          "error_count": 0,
+          "unauthorized_record_leakage_rate": 0.0,
+          "unauthorized_record_leakage_count": 0,
+          "camera_rejection_required_count": 65,
+          "missing_metadata_detection_rate": 0.8387,
+          "misclassification_detection_rate": 1.0,
+          "cross_domain_violation_detection_rate": 1.0,
+          "protected_b_isolation_rate": 1.0,
+          "false_compliance_alert_rate": 0.0,
+          "audit_completeness": 1.0,
+          "downstream_contamination_rate": 0.0
+        },
+        "C_ai_assisted_plus_compliance": {
+          "metric_version": "2.0",
+          "wrong_match_count": 26,
+          "ground_truth_match_count": 941,
+          "approach": "C_ai_assisted_plus_compliance",
+          "mission_count": 1000,
+          "true_positives": 851,
+          "false_positives": 26,
+          "false_negatives": 90,
+          "true_negatives": 59,
+          "precision": 0.9704,
+          "recall": 0.9044,
+          "f1_score": 0.9362,
+          "false_fusion_rate": 0.026,
+          "missed_fusion_rate": 0.0956,
+          "at_risk_mission_count": 886,
+          "policy_violation_detection_rate": 1.0,
+          "unauthorized_leakage_rate": 0.0,
+          "unauthorized_leakage_count": 0,
+          "avg_latency_s": 0.001507,
+          "p95_latency_s": 0.002058,
+          "provenance_completeness": 1.0,
+          "fused_mission_count": 877,
+          "explanation_coverage": 1.0,
+          "evidence_loop_termination_rate": 1.0,
+          "error_count": 0,
+          "unauthorized_record_leakage_rate": 0.0,
+          "unauthorized_record_leakage_count": 0,
+          "camera_rejection_required_count": 65,
+          "missing_metadata_detection_rate": 0.8871,
+          "misclassification_detection_rate": 1.0,
+          "cross_domain_violation_detection_rate": 1.0,
+          "protected_b_isolation_rate": 1.0,
+          "false_compliance_alert_rate": 0.0,
+          "audit_completeness": 1.0,
+          "downstream_contamination_rate": 0.0
+        }
+      },
+      "case_file": "cases-seed-19.json",
+      "case_sha256": "fb1400f77d58343e67dbb12ebaafe13b2213f158da3c3ca35a5bd5c40e20a331"
+    },
+    {
+      "seed": 42,
+      "missions": 1000,
+      "metrics": {
+        "A_static_threshold_no_compliance": {
+          "metric_version": "2.0",
+          "wrong_match_count": 18,
+          "ground_truth_match_count": 930,
+          "approach": "A_static_threshold_no_compliance",
+          "mission_count": 1000,
+          "true_positives": 625,
+          "false_positives": 18,
+          "false_negatives": 305,
+          "true_negatives": 70,
+          "precision": 0.972,
+          "recall": 0.672,
+          "f1_score": 0.7947,
+          "false_fusion_rate": 0.018,
+          "missed_fusion_rate": 0.328,
+          "at_risk_mission_count": 874,
+          "policy_violation_detection_rate": 0.3364,
+          "unauthorized_leakage_rate": 0.58,
+          "unauthorized_leakage_count": 580,
+          "avg_latency_s": 2e-06,
+          "p95_latency_s": 3e-06,
+          "provenance_completeness": 0.0,
+          "fused_mission_count": 643,
+          "explanation_coverage": 0.0,
+          "evidence_loop_termination_rate": 1.0,
+          "error_count": 0,
+          "unauthorized_record_leakage_rate": 1.0,
+          "unauthorized_record_leakage_count": 60,
+          "camera_rejection_required_count": 60,
+          "missing_metadata_detection_rate": 0.0,
+          "misclassification_detection_rate": 0.36,
+          "cross_domain_violation_detection_rate": 0.2394,
+          "protected_b_isolation_rate": 0.3067,
+          "false_compliance_alert_rate": 0.0,
+          "audit_completeness": 0.0,
+          "downstream_contamination_rate": 0.0
+        },
+        "B_deterministic_plus_compliance": {
+          "metric_version": "2.0",
+          "wrong_match_count": 23,
+          "ground_truth_match_count": 930,
+          "approach": "B_deterministic_plus_compliance",
+          "mission_count": 1000,
+          "true_positives": 850,
+          "false_positives": 23,
+          "false_negatives": 80,
+          "true_negatives": 70,
+          "precision": 0.9737,
+          "recall": 0.914,
+          "f1_score": 0.9429,
+          "false_fusion_rate": 0.023,
+          "missed_fusion_rate": 0.086,
+          "at_risk_mission_count": 874,
+          "policy_violation_detection_rate": 1.0,
+          "unauthorized_leakage_rate": 0.0,
+          "unauthorized_leakage_count": 0,
+          "avg_latency_s": 0.001261,
+          "p95_latency_s": 0.001736,
+          "provenance_completeness": 1.0,
+          "fused_mission_count": 873,
+          "explanation_coverage": 1.0,
+          "evidence_loop_termination_rate": 1.0,
+          "error_count": 0,
+          "unauthorized_record_leakage_rate": 0.0,
+          "unauthorized_record_leakage_count": 0,
+          "camera_rejection_required_count": 60,
+          "missing_metadata_detection_rate": 0.863,
+          "misclassification_detection_rate": 1.0,
+          "cross_domain_violation_detection_rate": 1.0,
+          "protected_b_isolation_rate": 1.0,
+          "false_compliance_alert_rate": 0.0,
+          "audit_completeness": 1.0,
+          "downstream_contamination_rate": 0.0
+        },
+        "C_ai_assisted_plus_compliance": {
+          "metric_version": "2.0",
+          "wrong_match_count": 36,
+          "ground_truth_match_count": 930,
+          "approach": "C_ai_assisted_plus_compliance",
+          "mission_count": 1000,
+          "true_positives": 837,
+          "false_positives": 36,
+          "false_negatives": 93,
+          "true_negatives": 70,
+          "precision": 0.9588,
+          "recall": 0.9,
+          "f1_score": 0.9285,
+          "false_fusion_rate": 0.036,
+          "missed_fusion_rate": 0.1,
+          "at_risk_mission_count": 874,
+          "policy_violation_detection_rate": 1.0,
+          "unauthorized_leakage_rate": 0.0,
+          "unauthorized_leakage_count": 0,
+          "avg_latency_s": 0.001341,
+          "p95_latency_s": 0.00172,
+          "provenance_completeness": 1.0,
+          "fused_mission_count": 873,
+          "explanation_coverage": 1.0,
+          "evidence_loop_termination_rate": 1.0,
+          "error_count": 0,
+          "unauthorized_record_leakage_rate": 0.0,
+          "unauthorized_record_leakage_count": 0,
+          "camera_rejection_required_count": 60,
+          "missing_metadata_detection_rate": 0.863,
+          "misclassification_detection_rate": 1.0,
+          "cross_domain_violation_detection_rate": 1.0,
+          "protected_b_isolation_rate": 1.0,
+          "false_compliance_alert_rate": 0.0,
+          "audit_completeness": 1.0,
+          "downstream_contamination_rate": 0.0
+        }
+      },
+      "case_file": "cases-seed-42.json",
+      "case_sha256": "46a74d2b34cecb33f8370bfe92bbb4e10189433e7f479cf62a107c3716ebc0a1"
+    }
+  ],
+  "api_probe": {
+    "transport": "in-process ASGI TestClient; no TCP/TLS/proxy",
+    "app_instances": 2,
+    "concurrent_clients": 8,
+    "requests": 80,
+    "per_instance_work_slots": 2,
+    "status_counts": {
+      "200": 14,
+      "429": 66
+    },
+    "elapsed_seconds": 0.11436858399974881,
+    "accepted_requests_per_second": 122.4112383872021,
+    "successful_latency_ms_median": 34.782666500177584,
+    "successful_latency_ms_p95": 50.18925614967884,
+    "shared_decision_lookup_passed": true,
+    "decision_survived_app_restart": true,
+    "raw_requests": [
+      {
+        "status": 200,
+        "milliseconds": 42.256417000317015,
+        "conclusion_id": "25a597a4-63fe-4f42-b1d5-511262f6066c",
+        "revision": 1
+      },
+      {
+        "status": 200,
+        "milliseconds": 48.808083000039915,
+        "conclusion_id": "2c303f7c-d22d-426b-acd2-1907fd7db31f",
+        "revision": 1
+      },
+      {
+        "status": 200,
+        "milliseconds": 38.82908299965493,
+        "conclusion_id": "fd64130e-c684-46d2-a369-7f458871d46c",
+        "revision": 1
+      },
+      {
+        "status": 200,
+        "milliseconds": 52.754291999008274,
+        "conclusion_id": "524189d1-d518-4c11-a4e0-fbb27f31697e",
+        "revision": 1
+      },
+      {
+        "status": 429,
+        "milliseconds": 6.2007500000618165,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 429,
+        "milliseconds": 6.484457999249571,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 429,
+        "milliseconds": 5.961707998721977,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 429,
+        "milliseconds": 6.162000001495471,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 429,
+        "milliseconds": 13.265583000247716,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 429,
+        "milliseconds": 13.686249998499989,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 429,
+        "milliseconds": 14.776417001485243,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 429,
+        "milliseconds": 13.800458000332583,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 429,
+        "milliseconds": 5.961000000752392,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 429,
+        "milliseconds": 4.944624999552616,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 429,
+        "milliseconds": 5.926625000938657,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 429,
+        "milliseconds": 6.0815409997303504,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 429,
+        "milliseconds": 6.287707999945269,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 429,
+        "milliseconds": 5.703290999008459,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 429,
+        "milliseconds": 6.198041999596171,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 429,
+        "milliseconds": 6.3081249991228106,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 429,
+        "milliseconds": 4.994332999558537,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 429,
+        "milliseconds": 4.935291999572655,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 200,
+        "milliseconds": 34.11320799932582,
+        "conclusion_id": "853b8b38-7c37-439e-8bf5-b0667cb6b326",
+        "revision": 1
+      },
+      {
+        "status": 429,
+        "milliseconds": 3.647166999144247,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 429,
+        "milliseconds": 4.462791999685578,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 429,
+        "milliseconds": 4.516417000559159,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 200,
+        "milliseconds": 33.10975000022154,
+        "conclusion_id": "a62ff821-3cd2-4192-8491-2c546d7689a7",
+        "revision": 1
+      },
+      {
+        "status": 429,
+        "milliseconds": 4.381332999400911,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 429,
+        "milliseconds": 5.0760000012815,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 429,
+        "milliseconds": 4.049416998896049,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 429,
+        "milliseconds": 5.229375001363223,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 429,
+        "milliseconds": 4.712207999546081,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 429,
+        "milliseconds": 8.263916000942118,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 200,
+        "milliseconds": 35.34762500021316,
+        "conclusion_id": "191e3b8f-791d-4b7c-a6be-c64b21b5a11f",
+        "revision": 1
+      },
+      {
+        "status": 429,
+        "milliseconds": 5.794583001261344,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 200,
+        "milliseconds": 30.140958000629325,
+        "conclusion_id": "c036cfc8-94fb-4e99-a76c-ea746e2011f2",
+        "revision": 1
+      },
+      {
+        "status": 429,
+        "milliseconds": 6.03775000126916,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 429,
+        "milliseconds": 4.757207998409285,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 429,
+        "milliseconds": 5.050208001193823,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 429,
+        "milliseconds": 4.520667000178946,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 429,
+        "milliseconds": 5.7066669996856945,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 429,
+        "milliseconds": 5.302583000229788,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 429,
+        "milliseconds": 5.490749999808031,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 429,
+        "milliseconds": 4.921084000670817,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 429,
+        "milliseconds": 5.487540998728946,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 429,
+        "milliseconds": 3.973041000790545,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 200,
+        "milliseconds": 36.19316699951014,
+        "conclusion_id": "378ef4ee-bd46-426f-801a-c737e8b1ffd3",
+        "revision": 1
+      },
+      {
+        "status": 429,
+        "milliseconds": 3.9739580006425967,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 200,
+        "milliseconds": 31.643958000131533,
+        "conclusion_id": "b435e5a1-b9c2-49de-96be-8a648ab3013c",
+        "revision": 1
+      },
+      {
+        "status": 429,
+        "milliseconds": 4.001375000370899,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 429,
+        "milliseconds": 4.8873329997149995,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 429,
+        "milliseconds": 4.610791000231984,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 429,
+        "milliseconds": 5.385915999795543,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 429,
+        "milliseconds": 5.198041999392444,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 429,
+        "milliseconds": 5.280666999169625,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 200,
+        "milliseconds": 36.285416999817244,
+        "conclusion_id": "dd07700f-cca6-44b4-be94-d5198b1752da",
+        "revision": 1
+      },
+      {
+        "status": 429,
+        "milliseconds": 6.9100000000617,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 200,
+        "milliseconds": 34.21770800014201,
+        "conclusion_id": "057138fe-197e-4bd4-bde3-3d7cddecfb33",
+        "revision": 1
+      },
+      {
+        "status": 429,
+        "milliseconds": 6.719082999552484,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 429,
+        "milliseconds": 5.807916999401641,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 429,
+        "milliseconds": 4.0389999994658865,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 429,
+        "milliseconds": 5.432374999145395,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 429,
+        "milliseconds": 5.212457999732578,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 429,
+        "milliseconds": 5.817707999085542,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 429,
+        "milliseconds": 5.543124998439453,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 429,
+        "milliseconds": 4.291041999749723,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 429,
+        "milliseconds": 4.79066700063413,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 429,
+        "milliseconds": 4.432500001712469,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 429,
+        "milliseconds": 4.278791000615456,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 429,
+        "milliseconds": 4.862957999648643,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 200,
+        "milliseconds": 19.602250000389176,
+        "conclusion_id": "239e8499-744f-4de1-8de8-31583c040529",
+        "revision": 1
+      },
+      {
+        "status": 429,
+        "milliseconds": 5.099750000226777,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 200,
+        "milliseconds": 16.1712080007419,
+        "conclusion_id": "f07e6261-4aff-4b92-9fcd-6aad6cda867d",
+        "revision": 1
+      },
+      {
+        "status": 429,
+        "milliseconds": 4.756207999889739,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 429,
+        "milliseconds": 3.196875000867294,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 429,
+        "milliseconds": 4.908165999950143,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 429,
+        "milliseconds": 3.7474999990081415,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 429,
+        "milliseconds": 4.742084000099567,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 429,
+        "milliseconds": 5.3726250007457566,
+        "conclusion_id": null,
+        "revision": null
+      },
+      {
+        "status": 429,
+        "milliseconds": 5.109499999889522,
+        "conclusion_id": null,
+        "revision": null
+      }
+    ]
+  }
+}
