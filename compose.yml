@@ -1,0 +1,18 @@
+services:
+  fusion:
+    build: .
+    ports: ["127.0.0.1:8000:8000"]
+    environment:
+      FUSION_READER_TOKEN: ${FUSION_READER_TOKEN:?Set a long reader token}
+      FUSION_ADMIN_TOKEN: ${FUSION_ADMIN_TOKEN:?Set a distinct long admin token}
+      FUSION_STATE_DB: /state/fusion.sqlite3
+    volumes: ["fusion-state:/state"]
+    security_opt: ["no-new-privileges:true"]
+    cap_drop: ["ALL"]
+    read_only: true
+    tmpfs: ["/tmp:size=16m"]
+    mem_limit: 512m
+    cpus: 1.0
+    restart: unless-stopped
+volumes:
+  fusion-state:

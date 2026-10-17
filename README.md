@@ -4,6 +4,10 @@
 
 Enforce data-release rules before camera and radar evidence enters a fusion pipeline.
 
+**[Explore the interactive demonstration](https://feraselghandour.github.io/sensor-fusion-policy-engine/)** · [Operating scope](OPERATIONS.md)
+
+[![Interactive demonstration](assets/demo-preview.png)](https://feraselghandour.github.io/sensor-fusion-policy-engine/)
+
 ## Implementation
 
 Versioned policies, per-mission snapshots, filtered persistence, SQLite transaction state, reader/admin API roles, workload limits, and inspectable provenance. Deterministic association is compared with a small learned scorer while policy enforcement remains deterministic.
@@ -37,3 +41,7 @@ To generate a new synthetic evaluation: `python scripts/evaluate_system.py --out
 Synthetic prototype. These results establish behavior on generated cases, not operational sensor accuracy, regulatory certification, or multi-host availability. Caller-supplied authorization markers are not verified human identity. Latency measurements are in-process probes. The optional dashboard has not received fresh visual verification.
 
 [Validation record](VALIDATION.md) · [Inputs and applicable notices](DATA.md)
+
+## Rebuild the public demonstration
+
+Run `python demo/generate.py` to execute the synthetic scenarios through the actual implementation, then `python build_report.py`. The hosted page is a static evidence explorer; the Python application and full experiments run separately.
