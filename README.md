@@ -6,7 +6,9 @@ Enforce data-release rules before camera and radar evidence enters a fusion pipe
 
 **[Explore the interactive demonstration](https://feraselghandour.github.io/sensor-fusion-policy-engine/)** · [Operating scope](OPERATIONS.md)
 
-[![Interactive demonstration](assets/demo-preview.png)](https://feraselghandour.github.io/sensor-fusion-policy-engine/)
+[![Recorded association comparison across three synthetic evaluation seeds](https://raw.githubusercontent.com/FerasElghandour/FerasElghandour.github.io/main/assets/fusion-comparison.png)](https://feraselghandour.github.io/sensor-fusion-policy-engine/)
+
+The figure shows mean F1 across three recorded seeds, with one dot per seed. [Underlying evaluation](validation/release-20261017/results.json). Synthetic missions only.
 
 ## Implementation
 
